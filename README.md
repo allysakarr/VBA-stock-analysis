@@ -27,7 +27,7 @@ You also can see a clearly see a time decrease in code running through the year 
 
 
 # Summary 
-To conclude these results for Steve, DQ dropped a large amount in 2018. I would advise Steve to encourage his parents to allocate their funds to other companies to get the best return on their investment. Specifically, the companies "ENPH" and "RUN" contiually had positive returns, meaning that I would recommend investing more in these companies over soley in DQ. 
+To conclude these results for Steve, DQ dropped a large amount in 2018. I would advise Steve to encourage his parents to allocate their funds to other companies to get the best return on their investment. Specifically, the companies "ENPH" and "RUN" contiually had positive returns, meaning that I would recommend investing more in these companies over investing soley in DQ. 
 
 In regards to refactoring the code as I did for efficiency and time-saving purposes, I recognize there can be pros and cons to this method. 
 
@@ -35,4 +35,6 @@ The pros obviously would be that the code can run more efficiently, as we showed
 
 However, there are cons to approaching code in this way. By refactoring the code, the code has the potential to be altered in a negative way, leading to a potential decrease in functionality. It can become less specific and more generalized, leading to potentially ineffective code. Refactoring can also take longer, so if someone is on a time constraint with a project, refactoring might not be the best method to take when the goal is to produce quickly.
 
-With these pros and cons in mind, it is important to consider the long term effect wanted from the code. Specifically for this project, I wanted Steve to have a code that he could apply to more than a dozen stocks. This code would need to be able to run efficiently and well with larger sets of data. With the first code, it was already somewhat "slow" for just 12 tickers, but it was 
+With these pros and cons in mind, it is important to consider the long term effect wanted from the code. Specifically for this project, I wanted Steve to have a code that he could apply to more than a dozen stocks. This code would need to be able to run efficiently and well with larger sets of data. With the first code, it was already somewhat "slow" for just 12 tickers. As one of its pros though, it did run smoothly and successfully. With the refactored code, it substantially sped up the processing speed for the code to analyze the data. However, it took a lot of extra time to perfect a code that was already working. 
+
+Ultimately, I am glad the first code was refactored as it matches Steve's needs the best by enabling the code to work faster and more efficiently with larger sets of data. However, if someone is more concerned with using up extra time vs developing code that performs better, it might be better to use code that is not refactored in order to have effective code and move on. It depends on the needs of the project, but I would refactor code when given the chance as I am a fan of making things perform better and more efficiently.
