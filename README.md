@@ -1,4 +1,4 @@
-# stock-analysis
+# VBA-stock-analysis
 # Overview of Project
   My example client, Steve, is helping his parents out with their newest investment venture in green energy. Steve's parents want to invest all of their funds in one company based on the company stock ticker being "DQ" as his parents met at a Dairy Queen (DQ). Steve expressed some concern about this, and wants to run some analyses on the stocks of other green energy companies as well as the one that his parents have invested in to figure out where his parents' funds would be best allocated. 
   ## Purpose 
@@ -17,7 +17,22 @@ Lastly, this code used to analyzed all the stocks needed to be refactored in ord
 
 This ultimately produced the same values as the previous analysis, showing DQ analysis as having the highest return in 2017 and the biggest drop in 2018 and the companies generally having a largely positive return in 2017 and largely negative return in 2018. However, this refactoring process led to the VBA code running much faster and efficiently.
 
-To show this, I included a run button for the first code analyzing all the stocks along with the refactored code analyzing all the stocks. You can clearly see the efficiency and speed increase in the 2017 year by the first code running in 0.671875 seconds for 2017 vs the refactored code running in 0.1445312 seconds for 2017. I have the message box displayed below: ![VBA_Challenge_2017.png](https://github.com/allysakarr/stock-analysis/blob/master/Resources/VBA_Challenge_2017.png?raw=true).
+To show this, I included a run button for the first code analyzing all the stocks along with the refactored code analyzing all the stocks. You can clearly see the efficiency and speed increase in the 2017 year by the first code running in 0.671875 seconds for 2017 vs the refactored code running in 0.1445312 seconds for 2017. I have the message box displayed below:
 
-You also can see a clearly see a time decrease in code running through the year 2018. For the first code, it takes 0.671875 seconds for 2018 and for the refactored code, it takes 0.1367188 seconds for 2018. The message box with this information is displayed below: ![VBA_Challenge_2018.png](https://github.com/allysakarr/stock-analysis/blob/master/Resources/VBA_Challenge_2018.png?raw=true)
+![VBA_Challenge_2017.png](https://github.com/allysakarr/stock-analysis/blob/master/Resources/VBA_Challenge_2017.png?raw=true).
+
+You also can see a clearly see a time decrease in code running through the year 2018. For the first code, it takes 0.671875 seconds for 2018 and for the refactored code, it takes 0.1367188 seconds for 2018. The message box with this information is displayed below: 
+
+![VBA_Challenge_2018.png](https://github.com/allysakarr/stock-analysis/blob/master/Resources/VBA_Challenge_2018.png?raw=true)
+
+
 # Summary 
+To conclude these results for Steve, DQ dropped a large amount in 2018. I would advise Steve to encourage his parents to allocate their funds to other companies to get the best return on their investment. Specifically, the companies "ENPH" and "RUN" contiually had positive returns, meaning that I would recommend investing more in these companies over soley in DQ. 
+
+In regards to refactoring the code as I did for efficiency and time-saving purposes, I recognize there can be pros and cons to this method. 
+
+The pros obviously would be that the code can run more efficiently, as we showed in the results section by comparing the speeds of the first code vs the refactored code. Changing the code in this way allowed for the code to be applied for larger data sets in a faster and more effective way, leading to a decrease in things like code smells and increase in code refinement.
+
+However, there are cons to approaching code in this way. By refactoring the code, the code has the potential to be altered in a negative way, leading to a potential decrease in functionality. It can become less specific and more generalized, leading to potentially ineffective code. Refactoring can also take longer, so if someone is on a time constraint with a project, refactoring might not be the best method to take when the goal is to produce quickly.
+
+With these pros and cons in mind, it is important to consider the long term effect wanted from the code. Specifically for this project, I wanted Steve to have a code that he could apply to more than a dozen stocks. This code would need to be able to run efficiently and well with larger sets of data. With the first code, it was already somewhat "slow" for just 12 tickers, but it was 
