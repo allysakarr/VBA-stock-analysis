@@ -5,8 +5,24 @@
   The purpose of this project is to not only run an analysis on the DQ stock to show the total amount of shares that are traded daily (daily volume) along with the return percentage value, but also to run analyses on all the stocks of different green energy companies to compare the daily volumes and returns to see the different company results. This way, Steve's parents will have some detailed analysis in front of them to make a more educated decision on where to invest their money.
 # Results
 ## DQ Stock Analysis
-First, an analysis on the stock of the company "DQ" needs to be run as that is the primary company Steve's parents want to allocate their funds to. To do this, I began by making a separate worksheet to input the results of the DQ data analysis. From there, I activated the "2018" Worksheet as I wanted to gather my data from there and found the number of rows in Column A to loop over. I looped over all the rows, and then made a series of conditionals. I looked over all the rows using this line of code: '''ruby For i=2 To RowCount '''. These conditionals are to check the row ticker identity through the current row, the previous row and the following row.
+First, an analysis on the stock of the company "DQ" needs to be run as that is the primary company Steve's parents want to allocate their funds to. To do this, I began by making a separate worksheet to input the results of the DQ data analysis. From there, I activated the "2018" Worksheet as I wanted to gather my data from there and found the number of rows in Column A to loop over. I looped over all the rows, and then made a series of conditionals. These conditionals are to check the row ticker identity through the current row, the previous row and the following row. I have an example of the code I used below:
 
+'loop over all the rows
+For i = 2 To RowCount
+
+    If Cells(i, 1).Value = "DQ" Then
+        'increase totalVolume by the value in current row
+        totalVolume = totalVolume + Cells(i, 8).Value
+    End If
+    If Cells(i - 1, 1).Value <> "DQ" And Cells(i, 1).Value = "DQ" Then
+        'set starting price
+        startingPrice = Cells(i, 6).Value
+    End If
+    If Cells(i + 1, 1).Value <> "DQ" And Cells(i, 1).Value = "DQ" Then
+        'set ending price
+        endingPrice = Cells(i, 6).Value
+    End If
+Next i
 
 I then input this into the DQ Analysis worksheet and calculated a return of -.626% for DQ, which means the stock for DQ dropped by 63%. To see these results, please view the "DQ Analysis" worksheet in this file: ![VBA_Challenge](https://github.com/allysakarr/stock-analysis/blob/master/VBA_Challenge.xlsm?raw=true).
 ## Analysis on All Stocks
