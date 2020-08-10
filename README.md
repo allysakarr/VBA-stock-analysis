@@ -6,24 +6,24 @@
 # Results
 ## DQ Stock Analysis
 First, an analysis on the stock of the company "DQ" needs to be run as that is the primary company Steve's parents want to allocate their funds to. To do this, I began by making a separate worksheet to input the results of the DQ data analysis. From there, I activated the "2018" Worksheet as I wanted to gather my data from there and found the number of rows in Column A to loop over. I looped over all the rows, and then made a series of conditionals. These conditionals are to check the row ticker identity through the current row, the previous row and the following row. I have an example of the code I used below:
-'''
-'loop over all the rows
-For i = 2 To RowCount
 
-    If Cells(i, 1).Value = "DQ" Then
-        'increase totalVolume by the value in current row
-        totalVolume = totalVolume + Cells(i, 8).Value
-    End If
-    If Cells(i - 1, 1).Value <> "DQ" And Cells(i, 1).Value = "DQ" Then
-        'set starting price
-        startingPrice = Cells(i, 6).Value
-    End If
-    If Cells(i + 1, 1).Value <> "DQ" And Cells(i, 1).Value = "DQ" Then
-        'set ending price
-        endingPrice = Cells(i, 6).Value
-    End If
-Next i
-'''
+    'loop over all the rows
+    For i = 2 To RowCount
+
+        If Cells(i, 1).Value = "DQ" Then
+            'increase totalVolume by the value in current row
+            totalVolume = totalVolume + Cells(i, 8).Value
+        End If
+        If Cells(i - 1, 1).Value <> "DQ" And Cells(i, 1).Value = "DQ" Then
+            'set starting price
+            startingPrice = Cells(i, 6).Value
+        End If
+        If Cells(i + 1, 1).Value <> "DQ" And Cells(i, 1).Value = "DQ" Then
+            'set ending price
+            endingPrice = Cells(i, 6).Value
+        End If
+    Next i
+
 I then input this into the DQ Analysis worksheet and calculated a return of -.626% for DQ, which means the stock for DQ dropped by 63%. To see these results, please view the "DQ Analysis" worksheet in this file: ![VBA_Challenge](https://github.com/allysakarr/stock-analysis/blob/master/VBA_Challenge.xlsm?raw=true).
 ## Analysis on All Stocks
 Second, I ran an analysis on all the other companies using a similar methodology as I did for the DQ Analysis Worksheet. I wanted to include both years of Data availble, from 2017 and 2018, and I offered this as an Input Box in Excel to make the macro user-friendly. To check how long the macro takes to run, I included a timer. From here, I initialized some ticker arrays and some variables for both starting and ending prices. I used the same methodology from the previous analysis to create conditionals to get the total volume (total shares traded daily) for the current ticker, the starting price for the current ticker, and the ending price for the current ticker. I then put all this data into the new worksheet "All Stocks Analysis" to display the ticker, total Volume and the return value as a percentage. I also formatted this data so it would display as bolded and with different number formatting for readability. I made the data in the return column display as green if the return was positive and red if the return to negative to give more meaning behind the values displayed. I then closed the timer in the code and then provided a message box to display the results of the macro. 
@@ -31,8 +31,17 @@ Second, I ran an analysis on all the other companies using a similar methodology
 The results of this analysis showed that in 2017, all companies had a positive return with the exception of company with the ticker "TERP". When the macro ran for 2018, all of the companies had a negative return except for the companies with tickers "ENPH" and "RUN". DQ, specifically had a positive return of 199.4% in 2017, meaninig they had a great monetary return. However, DQ had a return of -62.6% the following year in 2018, showing the largest drop of all the companies. To see these results, please view the "All Stocks Analysis" worksheet in this file: ![VBA_Challenge](https://github.com/allysakarr/stock-analysis/blob/master/VBA_Challenge.xlsm?raw=true).
 
 ## Refactored Analysis on All Stocks
-Lastly, this code used to analyzed all the stocks needed to be refactored in order to accomodate more data and execute the macro more efficiently and quickly. In order to do this, I used similar code but refined it. I created a tickerIndex to use throughout the arrays, which were for the tickerVolumes, tickerStartingPrices and tickerEndingPrices. As I began to run my loop through all the tickers, the tickerIndex would be used as a constant to access the correct index throughout all of my conditionals. I then used the same logic as the previous analysis to loop through all of the arrays and output the "Ticker", "Total Daily Volume", and "Return" back into the All Stocks Analysis worksheet.
+Lastly, this code used to analyzed all the stocks needed to be refactored in order to accomodate more data and execute the macro more efficiently and quickly. In order to do this, I used similar code but refined it. I created a tickerIndex to use throughout the arrays, which were for the tickerVolumes, tickerStartingPrices and tickerEndingPrices. As I began to run my loop through all the tickers, the tickerIndex would be used as a constant to access the correct index throughout all of my conditionals. I then used the same logic as the previous analysis to loop through all of the arrays and output the "Ticker", "Total Daily Volume", and "Return" back into the All Stocks Analysis worksheet. Here is an example of that code:
 
+    '4) Loop through your arrays to output the Ticker, Total Daily Volume, and Return.
+        For i = 0 To 11
+        
+            Worksheets("All Stocks Analysis").Activate
+            Cells(4 + i, 1).Value = tickers(i)
+            Cells(4 + i, 2).Value = tickerVolumes(i)
+            Cells(4 + i, 3).Value = tickerEndingPrices(i) / tickerStartingPrices(i) - 1
+        
+        Next i
 This edit ultimately produced the same values as the previous analysis, showing DQ analysis as having the highest return in 2017 and the biggest drop in 2018 and the companies generally having a largely positive return in 2017 and largely negative return in 2018. However, this refactoring process led to the VBA code running much faster and efficiently.
 
 To show this, I included a run button for the first code analyzing all the stocks along with another run button for the refactored code analyzing all the stocks. To see view these run buttons, please view the "All Stocks Analysis" worksheet in this file: ![VBA_Challenge](https://github.com/allysakarr/stock-analysis/blob/master/VBA_Challenge.xlsm?raw=true). You can clearly see the efficiency and speed increase in the 2017 year. For an example, I tested the run buttons and ran the first code in 0.671875 seconds for 2017 and ran the refactored code in 0.1210938 seconds for 2017. The values are generally around ~.6 seconds for the first code vs ~.12-.14 seconds for the refactored code. I have the message box displayed below:
